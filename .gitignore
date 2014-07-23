@@ -3,3 +3,4 @@
 *.hex
 *.map
 *.txt
+!mspdebug-instructions.txt

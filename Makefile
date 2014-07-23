@@ -10,7 +10,7 @@
 # TARGET: name of the output file
 TARGET = main
 # MCU: part number to build for
-MCU = msp430g2231
+MCU = msp430g2553
 # SOURCES: list of input source sources
 SOURCES = main.c
 # INCLUDES: list of includes, by default, use Includes directory
@@ -39,6 +39,7 @@ MAKETXT 	= srec_cat
 UNIX2DOS	= unix2dos
 RM      	= rm -f
 MKDIR		= mkdir -p
+MSPDEBUG    = mspdebug
 #######################################
 
 # file that includes all dependencies
@@ -76,6 +77,9 @@ $(OUTDIR):
 
 # remove build artifacts and executables
 clean:
-	-$(RM) $(OUTDIR)/*
+	-$(RM) $(OUTDIR)
 
-.PHONY: all clean
+flash:
+	$(MSPDEBUG) rf2500 < mspdebug-instructions.txt
+
+.PHONY: all clean flash

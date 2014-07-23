@@ -9,7 +9,7 @@ int main() {
     // halt watchdog
     WDTCTL = WDTPW + WDTHOLD;
     // make 1.0 and 1.6 pins outputs
-    P1DIR = 0x41;
+    P1DIR = BIT0 | BIT6;
     // set 1.0 pin high
     P1OUT = 0x1;
     for (;;) {
